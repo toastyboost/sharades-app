@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const MessagesContainer = styled.div`
   height: calc(100vh - 62px);
+  padding-top: 12px;
+  width: 100%;
   overflow: scroll;
 `;
 
 export const Message = styled.div`
   display: flex;
-  flex-wrap: wrap;
+
   padding: 0 15px;
   margin-bottom: 15px;
 
@@ -17,23 +19,20 @@ export const Message = styled.div`
 `;
 
 export const MessageHeader = styled.div`
-  width: 100%;
+  width: 36px;
+  height: 36px;
   display: flex;
-`;
-
-export const MessageName = styled.div`
-  font-size: 1.2rem;
-  line-height: 1em;
-  font-weight: 700;
-  margin-right: 6px;
-`;
-
-export const MessageDate = styled.div`
-  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 3px;
+  background-color: var(--body-bg);
+  letter-spacing: -2px;
+  margin-right: 12px;
 `;
 
 export const MessageContent = styled.div`
-  width: 100%;
+  width: 70%;
   padding: 6px 30px 7px 0;
   font-size: 1.4rem;
   color: #000;

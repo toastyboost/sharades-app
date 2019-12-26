@@ -13,12 +13,7 @@ import {
 const MessageItem = ({ name, ts, msg }) => {
   return (
     <Message>
-      <MessageHeader>
-        <MessageName>{name}</MessageName>
-        <MessageDate>
-          <Moment date={ts} format="HH:MM" />
-        </MessageDate>
-      </MessageHeader>
+      <MessageHeader>{name}</MessageHeader>
       <MessageContent>{msg}</MessageContent>
     </Message>
   );
