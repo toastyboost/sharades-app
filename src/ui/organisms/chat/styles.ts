@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const ChatContainer = styled.div`
+  display: flex;
+`;
+
 export const MessagesContainer = styled.div`
   height: calc(100vh - 62px);
   padding-top: 12px;
