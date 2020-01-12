@@ -1,6 +1,6 @@
 const isProduction = process.env.NODE_ENV === "production";
 
-export const server = !isProduction
+export const server = isProduction
   ? "https://sharades-server.herokuapp.com:7052"
   : "http://localhost:8000";
 
