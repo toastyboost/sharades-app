@@ -1,7 +1,8 @@
 import io from "socket.io-client";
 import { createEffect } from "effector";
+
 import { receiveMsg, setChatHistory } from "features/messages";
-import { setUsersOnline } from "features/users";
+import { setUsersOnline, receiveTyping, stopTyping } from "features/users";
 import { paintImage } from "features/draw";
 
 import { server } from "./";
@@ -40,8 +41,18 @@ export const sendMsg = createEffect<MsgProps, void>({
   },
 });
 
+export const sendTyping = createEffect<void, void>({
+  handler() {
+    socket.emit("USER_TYPING");
+  },
+});
+
 socket.on("USER_MESSAGE", (msg: MsgProps) => {
   receiveMsg(msg);
+});
+
+socket.on("USER_TYPING", (user: string) => {
+  receiveTyping(user);
 });
 
 //

@@ -1,1 +1,1 @@
-export { $usersOnline, setUsersOnline } from "./model";
+export { $usersOnline, setUsersOnline, receiveTyping, stopTyping, $usersTyping } from "./model";

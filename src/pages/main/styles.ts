@@ -18,24 +18,24 @@ export const Aside = styled.aside`
   height: calc(100vh - 72px);
   background-color: var(--block-bg);
   position: absolute;
-  right: 120px;
+  right: 96px;
   top: 0;
   bottom: 0;
   margin: 36px;
   border-radius: 5px;
-  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   z-index: 100;
 `;
 
 export const RightPanel = styled.div`
-  width: 120px;
+  width: 96px;
   height: calc(100vh - 124px);
   background-color: var(--primary);
   position: absolute;
   right: 0;
   margin: 62px 36px;
   border-radius: 0 5px 5px 0;
-  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
 `;
 
 export const MessageField = styled(Field)`

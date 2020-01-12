@@ -29,7 +29,7 @@ export const GenericStyles = createGlobalStyle`
     --red: #CD4040;
     --green: #64CA95;
     --blue: #157efb;
-    --box-shadow: 0 2px 6px 4px rgba(0, 0, 0, 0.03);
+    --box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
   }
 
   body,

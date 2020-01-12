@@ -1,6 +1,6 @@
 import { createEvent, createStore, guard, sample, combine, forward } from "effector";
 
-import { sendMsg } from "api/socket";
+import { sendMsg, sendTyping } from "api/socket";
 import { $session } from "features/user";
 
 import { createField, createForm } from "lib/form-factories";
@@ -9,7 +9,9 @@ import { createCountdown } from "lib/create-countdown";
 import { validateMessage } from "lib/validators";
 
 export const submitMessage = createEvent<void>();
+
 const resetMessage = createEvent<void>();
+const disableForm = createEvent<void | number>();
 
 export const $ticksLeft = createStore<number>(0);
 const $isCountdownEnd = createStore<boolean>(true);
@@ -24,8 +26,6 @@ export const loginForm = createForm({
   name: "messageForm",
   fields: [msgField],
 });
-
-export const disableForm = createEvent<void | number>();
 
 const formStatus = createCountdown("formSubmit", {
   start: disableForm,
@@ -51,6 +51,8 @@ guard({
   filter: $isFormValid,
   target: sendMsg,
 });
+
+forward({ from: msgField.changed, to: sendTyping });
 
 forward({ from: sendMsg, to: resetMessage });
 forward({ from: sendMsg, to: disableForm.prepend(() => 5) });

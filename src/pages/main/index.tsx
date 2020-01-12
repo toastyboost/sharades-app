@@ -16,14 +16,15 @@ import {
 
 import { $chatHistory } from "features/messages";
 import { $session } from "features/user";
-import { $usersOnline } from "features/users";
+import { $usersOnline, $usersTyping } from "features/users";
 
-import { submitMessage, msgField, loginForm, $ticksLeft, $isFormValid } from "./model";
+import { submitMessage, msgField, $ticksLeft, $isFormValid } from "./model";
 
 export const MainPage = () => {
   const history = useStore($chatHistory);
   const session = useStore($session);
   const users = useStore($usersOnline);
+  const typing = useStore($usersTyping);
   const ticksLeft = useStore($ticksLeft);
   const isFormValid = useStore($isFormValid);
 
@@ -38,7 +39,7 @@ export const MainPage = () => {
       </Main>
       <Aside>
         <Chat history={history}>
-          <Form handleSubmit={handleSubmit} store={loginForm}>
+          <Form handleSubmit={handleSubmit}>
             <UserAvatar>{session.name}</UserAvatar>
             <MessageField
               store={msgField}
@@ -57,7 +58,7 @@ export const MainPage = () => {
         </Chat>
       </Aside>
       <RightPanel>
-        <OnlineUsers users={users} />
+        <OnlineUsers users={users} typing={typing} host="😱" />
       </RightPanel>
     </MainContainer>
   );
