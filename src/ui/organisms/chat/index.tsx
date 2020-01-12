@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Effect } from "effector";
 
-import { MsgProps } from "api";
+import { MsgProps } from "api/socket";
 
 import {
   //
@@ -10,34 +9,50 @@ import {
   Message,
   MessageHeader,
   MessageContent,
+  NoMessagesContainer,
 } from "./styles";
 
-import { MessageForm } from "ui/molecules";
-
 const MessageItem: React.FC<MsgProps> = ({ name, ts, msg }) => {
+  const [isVisible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    setVisible(true);
+  }, []);
+
   return (
-    <Message>
+    <Message aria-hidden={isVisible}>
       <MessageHeader>{name}</MessageHeader>
       <MessageContent>{msg}</MessageContent>
     </Message>
   );
 };
 
-type ChatProps = {
-  history: MsgProps[];
-  username: string;
-  handleSend: Effect<MsgProps, void>;
+const NoMessages = () => {
+  return (
+    <NoMessagesContainer>
+      <span role="img" aria-label="No messages">
+        🙂
+      </span>
+      В чате пока нет сообщений, будте первым!
+    </NoMessagesContainer>
+  );
 };
 
-export const Chat: React.FC<ChatProps> = ({ history, username, handleSend }) => {
+type ChatProps = {
+  history: MsgProps[];
+};
+
+export const Chat: React.FC<ChatProps> = ({ history, children }) => {
   return (
     <ChatContainer>
       <MessagesContainer>
-        {history
-          ? history.map((item, key) => <MessageItem key={key} {...item} />)
-          : "Нет сообщений"}
+        {history.length > 0 ? (
+          history.map((item, key) => <MessageItem key={key} {...item} />)
+        ) : (
+          <NoMessages />
+        )}
       </MessagesContainer>
-      <MessageForm handleSend={handleSend} name={username} />
+      {children}
     </ChatContainer>
   );
 };

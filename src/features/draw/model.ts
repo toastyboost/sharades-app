@@ -1,5 +1,5 @@
 import { createStore, createEffect, createEvent } from "effector";
-import * as API from "api";
+import * as API from "api/socket";
 
 export const drawImage = createEffect<API.DrawningProps, void>();
 export const paintImage = createEvent<API.DrawningProps>();

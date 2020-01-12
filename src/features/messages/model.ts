@@ -1,12 +1,20 @@
-import { createEffect, createStore } from "effector";
+import { createEvent, createStore } from "effector";
 
-import * as API from "api";
+import * as API from "api/socket";
 
-export const receiveMsg = createEffect<API.MsgProps, void>();
-export const sendMsg = createEffect<API.MsgProps, void>();
-
-// sendMsg.use(API.sendMsg);
+export const receiveMsg = createEvent<API.MsgProps>();
+export const sendMsg = createEvent<API.MsgProps>();
+export const setChatHistory = createEvent<API.MsgProps[]>();
 
 export const $chatHistory = createStore<[] | API.MsgProps[]>([]);
 
-$chatHistory.on(receiveMsg, (history, msg) => [msg, ...history]);
+$chatHistory.on(setChatHistory, (_, serverHistory) => {
+  console.log("serverHistory", serverHistory);
+  return serverHistory;
+});
+
+$chatHistory.on(receiveMsg, (history, msg) => {
+  console.log("receiveMsg", msg);
+
+  return [msg, ...history];
+});

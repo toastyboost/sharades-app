@@ -1,43 +1,27 @@
 import * as React from "react";
-import { Effect } from "effector";
 
-import { FieldParams } from "ui/atoms/field";
-
-import * as API from "api";
-import { LoginContainer, PreserveNames, Name, LoginSubmit } from "./styles";
+import { LoginContainer, LoginSubmit } from "./styles";
 
 type LoginProps = {
-  handleSubmit?: Effect<API.RegUsersProps, void>;
+  handleSubmit?: React.FormEventHandler<HTMLFormElement>;
   isError?: boolean;
-  fields?: {
-    [key: string]: FieldParams;
-  };
+  isLoading: boolean;
 };
 
-const names = ["🐥", "🦆", "🧜‍♀️", "🧙‍♀️"];
-
-export const Login = ({ fields = {}, isError, handleSubmit }: LoginProps) => {
-  const [activeName, setActiveName] = React.useState<string>("");
-
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (handleSubmit) {
-      handleSubmit({
-        name: activeName,
-      });
-    }
+export const Login: React.FC<LoginProps> = ({
+  children,
+  isError = false,
+  handleSubmit,
+  isLoading = false,
+}) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleSubmit && handleSubmit(e);
   };
 
   return (
-    <LoginContainer onSubmit={onSubmit}>
-      <PreserveNames>
-        {names.map((name, key) => (
-          <Name key={key} onClick={() => setActiveName(name)} data-active={activeName === name}>
-            {name}
-          </Name>
-        ))}
-      </PreserveNames>
+    <LoginContainer onSubmit={onSubmit} aria-disabled={isLoading}>
+      {children}
       <LoginSubmit type="submit" name="submit" data-disabled={isError}>
         Войти
       </LoginSubmit>

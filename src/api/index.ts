@@ -1,44 +1,42 @@
-import io from "socket.io-client";
+const isProduction = process.env.NODE_ENV === "production";
 
-import { receiveMsg } from "features/messages";
-import { getUsersOnline } from "features/users";
-import { paintImage } from "features/draw";
+export const server = isProduction
+  ? "https://sharades-server.herokuapp.com:8000"
+  : "http://localhost:8000";
 
-export const socket = io("http://localhost:8000");
-
-export type UsersProps = {
-  name: string;
+type RequestProps = {
+  method: "GET" | "POST" | "PUT" | "DELETE";
+  url: string;
+  params?: any;
 };
 
-export type RegUsersProps = {
-  name: string;
+type HeadersProps = {
+  Accept: string;
+  "Content-Type": string;
 };
 
-export type MsgProps = {
-  name: string;
-  msg: string;
-  ts: number;
-};
+export const apiRequest = async ({ method, url, params }: RequestProps) => {
+  const headers: HeadersProps = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
 
-export type DrawningProps = {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-};
+  let response;
 
-socket.on("NEW_CHAT_MESSAGE", (msg: MsgProps) => receiveMsg(msg));
-socket.on("USERS_ONLINE", (users: UsersProps[]) => getUsersOnline(users));
-socket.on("USER_DRAWNING", (coordiantes: DrawningProps) => paintImage(coordiantes));
+  try {
+    response = await fetch(`/api/v1${url}`, {
+      method,
+      body: JSON.stringify(params),
+      headers,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
 
-export const sendMsg = (msg: MsgProps) => {
-  socket.emit("USER_MESSAGE", msg);
-};
+  const headersType = response.headers.get("content-type");
 
-export const registerUser = (user: RegUsersProps) => {
-  socket.emit("REGISTER_USER", user);
-};
-
-export const userDraw = (coordiantes: DrawningProps) => {
-  socket.emit("USER_DRAWNING", coordiantes);
+  if (headersType && headersType.includes("application/json")) {
+    const res = await response.json();
+    return res;
+  }
 };

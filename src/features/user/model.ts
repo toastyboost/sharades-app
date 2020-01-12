@@ -1,16 +1,12 @@
 import { createStore, createEffect } from "effector";
-import * as API from "api";
+import * as API from "api/socket";
 
-type UserSession = {
-  name: string | null;
-};
+export const signIn = createEffect<string, void>();
 
-export const registerUser = createEffect<API.RegUsersProps, void>();
+signIn.use((name: string) => API.signIn({ name }));
 
-registerUser.use(API.registerUser);
-
-export const $session = createStore<UserSession>({
+export const $session = createStore<API.Credentials>({
   name: null,
 });
 
-$session.on(registerUser, (_, user) => user);
+$session.on(signIn, (_, name: string) => ({ name }));

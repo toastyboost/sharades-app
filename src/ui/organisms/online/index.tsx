@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { OnlineContainer } from "./styles";
+import { OnlineContainer, UserAvatar } from "./styles";
 
-import * as API from "api";
+import * as API from "api/socket";
 
 type UsersProps = {
   users: API.UsersProps[];
@@ -12,7 +12,7 @@ export const OnlineUsers: React.FC<UsersProps> = ({ users }) => {
   return (
     <OnlineContainer>
       {users.map(({ name }, key) => (
-        <div key={key}>{name}</div>
+        <UserAvatar key={key}>{name}</UserAvatar>
       ))}
     </OnlineContainer>
   );

@@ -107,4 +107,6 @@ export const GenericStyles = createGlobalStyle`
   footer {
     font-size: 1.6rem;
   }
+ 
+  
 `;

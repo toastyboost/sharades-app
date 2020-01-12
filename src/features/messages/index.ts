@@ -1,1 +1,1 @@
-export { $chatHistory, receiveMsg, sendMsg } from "./model";
+export { $chatHistory, receiveMsg, sendMsg, setChatHistory } from "./model";

@@ -1,1 +1,1 @@
-export { $usersOnline, getUsersOnline } from "./model";
+export { $usersOnline, setUsersOnline } from "./model";

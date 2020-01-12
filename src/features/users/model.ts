@@ -1,8 +1,8 @@
-import { createStore, createEffect } from "effector";
-import * as API from "api";
+import { createStore, createEvent } from "effector";
+import * as API from "api/socket";
 
-export const getUsersOnline = createEffect<API.UsersProps[], void>();
+export const setUsersOnline = createEvent<API.UsersProps[]>();
 
 export const $usersOnline = createStore<API.UsersProps[] | []>([]);
 
-$usersOnline.on(getUsersOnline, (_, users) => users);
+$usersOnline.on(setUsersOnline, (_, usersList) => usersList);

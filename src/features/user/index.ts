@@ -1,1 +1,1 @@
-export { $session, registerUser } from "./model";
+export { $session, signIn } from "./model";

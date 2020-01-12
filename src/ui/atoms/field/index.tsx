@@ -1,9 +1,11 @@
 import * as React from "react";
+import styled from "styled-components";
 
 import { Store, Event } from "effector";
 import { useStore } from "effector-react";
 
 export type FieldParams = {
+  className?: string;
   store: {
     name: string;
     $value: Store<string>;
@@ -15,16 +17,16 @@ export type FieldParams = {
     name: string;
     placeholder?: string;
     autofocus?: boolean;
+    isDisabled?: boolean;
   };
 };
 
-export const Field = ({ store, config }: FieldParams) => {
-  const { label, name, placeholder, autofocus } = config;
+export const Field: React.FC<FieldParams> = ({ store, config, className }) => {
+  const { label, name, placeholder, autofocus, isDisabled = false } = config;
   const { $value, $error, changed } = store;
 
   const value = useStore($value);
   const error = useStore($error);
-
   const isError = !!error;
 
   const inputOptions = {
@@ -37,10 +39,18 @@ export const Field = ({ store, config }: FieldParams) => {
   };
 
   return (
-    <div style={{ display: "none" }}>
-      {label && <div>{label}</div>}
-      <input {...inputOptions} />
-      {isError && <div>{error}</div>}
+    <div className={className}>
+      {label && <label>{label}</label>}
+      <input {...inputOptions} disabled={isDisabled} autoComplete="off" />
+      {/* {isError && <Error>{error}</Error>} */}
     </div>
   );
 };
+
+export const Error = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-top: 12px;
+`;
