@@ -2,6 +2,7 @@
   "name": "charades-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://toastyboost.github.io/sharades-app",
   "dependencies": {
     "effector": "^20.8.2",
     "effector-react": "^20.5.2",
