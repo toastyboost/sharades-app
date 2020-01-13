@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
     "baseUrl": "./src",
     "strict": true,
     "allowSyntheticDefaultImports": true,
