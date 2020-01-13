@@ -30,6 +30,6 @@ jobs:
       - name: Build and Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.CHAT_DEPLOY_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.SHARADES_CLIENT_DEPLOY }}
           BRANCH: gh-pages
           FOLDER: public
