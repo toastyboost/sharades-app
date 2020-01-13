@@ -1,4 +1,3 @@
-const io = require("socket.io-client");
 import { createEffect } from "effector";
 
 import { receiveMsg, setChatHistory } from "features/messages";
@@ -7,6 +6,8 @@ import { drawImage } from "features/draw";
 import { setCountdown } from "features/game";
 
 import { server } from "./";
+
+const io = require("socket.io-client");
 
 export const socket = io(server);
 
