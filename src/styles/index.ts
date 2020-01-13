@@ -1,1 +1,0 @@
-export { GenericStyles } from "./defaults";
