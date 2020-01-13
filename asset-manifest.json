@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/static/js/main.aa052f6d.chunk.js",
-    "main.js.map": "/static/js/main.aa052f6d.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.7a124419.js",
-    "runtime-main.js.map": "/static/js/runtime-main.7a124419.js.map",
-    "static/js/2.e9bc2148.chunk.js": "/static/js/2.e9bc2148.chunk.js",
-    "static/js/2.e9bc2148.chunk.js.map": "/static/js/2.e9bc2148.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.e4a50161b3fab0bdcd98823904e9d2df.js": "/precache-manifest.e4a50161b3fab0bdcd98823904e9d2df.js",
-    "service-worker.js": "/service-worker.js",
-    "static/js/2.e9bc2148.chunk.js.LICENSE": "/static/js/2.e9bc2148.chunk.js.LICENSE"
+    "main.js": "/sharades-app/static/js/main.aa052f6d.chunk.js",
+    "main.js.map": "/sharades-app/static/js/main.aa052f6d.chunk.js.map",
+    "runtime-main.js": "/sharades-app/static/js/runtime-main.a1008ccf.js",
+    "runtime-main.js.map": "/sharades-app/static/js/runtime-main.a1008ccf.js.map",
+    "static/js/2.210ba425.chunk.js": "/sharades-app/static/js/2.210ba425.chunk.js",
+    "static/js/2.210ba425.chunk.js.map": "/sharades-app/static/js/2.210ba425.chunk.js.map",
+    "index.html": "/sharades-app/index.html",
+    "precache-manifest.73a9fa7b8fe11b849950755844760770.js": "/sharades-app/precache-manifest.73a9fa7b8fe11b849950755844760770.js",
+    "service-worker.js": "/sharades-app/service-worker.js",
+    "static/js/2.210ba425.chunk.js.LICENSE": "/sharades-app/static/js/2.210ba425.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.7a124419.js",
-    "static/js/2.e9bc2148.chunk.js",
+    "static/js/runtime-main.a1008ccf.js",
+    "static/js/2.210ba425.chunk.js",
     "static/js/main.aa052f6d.chunk.js"
   ]
 }
