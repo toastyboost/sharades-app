@@ -8,8 +8,6 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "typeRoots": ["./node_modules/@types"],
-    "types": ["socket.io-client"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "forceConsistentCasingInFileNames": true,
