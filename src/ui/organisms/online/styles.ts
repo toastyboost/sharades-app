@@ -26,7 +26,7 @@ export const UserAvatar = styled.div`
     top: -8px;
     right: -12px;
     font-size: 1.6rem;
-    transition: 0.3s;
+    transition: 0.1s;
   }
 
   &[data-typing="false"] {
@@ -61,7 +61,7 @@ export const Host = styled(UserAvatar)`
     bottom: -16px;
     width: 100%;
     height: 1px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
   width: 5.6rem;

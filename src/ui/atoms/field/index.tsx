@@ -23,11 +23,16 @@ export type FieldParams = {
 
 export const Field: React.FC<FieldParams> = ({ store, config, className }) => {
   const { label, name, placeholder, autofocus, isDisabled = false } = config;
-  const { $value, $error, changed } = store;
+  const {
+    //
+    $value,
+    // $error,
+    changed,
+  } = store;
 
   const value = useStore($value);
-  const error = useStore($error);
-  const isError = !!error;
+  // const error = useStore($error);
+  // const isError = !!error;
 
   const inputOptions = {
     autoFocus: autofocus,

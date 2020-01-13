@@ -8,13 +8,6 @@ export const setChatHistory = createEvent<API.MsgProps[]>();
 
 export const $chatHistory = createStore<[] | API.MsgProps[]>([]);
 
-$chatHistory.on(setChatHistory, (_, serverHistory) => {
-  console.log("serverHistory", serverHistory);
-  return serverHistory;
-});
+$chatHistory.on(setChatHistory, (_, serverHistory) => serverHistory);
 
-$chatHistory.on(receiveMsg, (history, msg) => {
-  console.log("receiveMsg", msg);
-
-  return [msg, ...history];
-});
+$chatHistory.on(receiveMsg, (history, msg) => [msg, ...history]);

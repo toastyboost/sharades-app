@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [10.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -19,7 +19,7 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@master
         with:
-          node-version: 12.x
+          node-version: 10.x
 
       - name: Install Dependencies
         run: yarn install --prod --pure-lockfile

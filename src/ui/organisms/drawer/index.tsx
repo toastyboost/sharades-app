@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useStore } from "effector-react";
 import { DrawerContainer, DrawerCanvas } from "./styles";
-import { drawImage, $image } from "features/draw";
+import { drawImage, $coordinates } from "features/draw";
 
 const dpi = window.devicePixelRatio;
 
@@ -42,7 +42,7 @@ const getCoordinates = (e: EventProps, ref: HTMLCanvasElement) => ({
 
 export const Drawer = () => {
   const cvs = React.useRef<HTMLCanvasElement | null>(null);
-  const paint = useStore($image);
+  const paint = useStore($coordinates);
 
   const [isPainting, painting] = React.useState(false);
   const [coordinates, setCoordinates] = React.useState<PositionProps | null>(null);

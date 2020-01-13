@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Field } from "ui/atoms";
+import { Field, Timer } from "ui/atoms";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -80,4 +80,10 @@ export const FormSubmit = styled.input`
   &[aria-disabled="false"] {
     opacity: 1;
   }
+`;
+
+export const RoundTimer = styled(Timer)`
+  position: absolute;
+  bottom: 36px;
+  left: 36px;
 `;

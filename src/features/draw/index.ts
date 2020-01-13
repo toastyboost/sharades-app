@@ -1,1 +1,1 @@
-export { drawImage, paintImage, $image } from "./model";
+export { drawImage, $coordinates } from "./model";

@@ -12,11 +12,13 @@ import {
   MessageField,
   UserAvatar,
   FormSubmit,
+  RoundTimer,
 } from "./styles";
 
 import { $chatHistory } from "features/messages";
 import { $session } from "features/user";
 import { $usersOnline, $usersTyping } from "features/users";
+import { $roundTimer } from "features/game";
 
 import { submitMessage, msgField, $ticksLeft, $isFormValid } from "./model";
 
@@ -27,6 +29,7 @@ export const MainPage = () => {
   const typing = useStore($usersTyping);
   const ticksLeft = useStore($ticksLeft);
   const isFormValid = useStore($isFormValid);
+  const roundTimer = useStore($roundTimer);
 
   const handleSubmit = () => {
     submitMessage();
@@ -35,6 +38,7 @@ export const MainPage = () => {
   return (
     <MainContainer>
       <Main>
+        <RoundTimer time={roundTimer} />
         <Drawer />
       </Main>
       <Aside>

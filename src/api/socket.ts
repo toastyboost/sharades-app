@@ -2,8 +2,9 @@ import io from "socket.io-client";
 import { createEffect } from "effector";
 
 import { receiveMsg, setChatHistory } from "features/messages";
-import { setUsersOnline, receiveTyping, stopTyping } from "features/users";
-import { paintImage } from "features/draw";
+import { setUsersOnline, receiveTyping } from "features/users";
+import { drawImage } from "features/draw";
+import { setCountdown } from "features/game";
 
 import { server } from "./";
 
@@ -20,7 +21,7 @@ export type MsgProps = {
   msg: string;
 };
 
-export type DrawningProps = {
+export type CoodrinateProps = {
   x1: number;
   y1: number;
   x2: number;
@@ -47,6 +48,14 @@ export const sendTyping = createEffect<void, void>({
   },
 });
 
+export const sendDrawning = createEffect<CoodrinateProps, void>({
+  handler(coordiantes) {
+    socket.emit("USER_DRAWNING", coordiantes);
+  },
+});
+
+//
+
 socket.on("USER_MESSAGE", (msg: MsgProps) => {
   receiveMsg(msg);
 });
@@ -55,15 +64,12 @@ socket.on("USER_TYPING", (user: string) => {
   receiveTyping(user);
 });
 
+socket.on("USER_DRAWNING", (coordiantes: CoodrinateProps) => drawImage(coordiantes));
+socket.on("ROUND_COUNTDOWN", (time: number) => setCountdown(time));
+
 //
 socket.on("USERS_ONLINE", (users: UsersProps[]) => setUsersOnline(users));
-socket.on("USER_DRAWNING", (coordiantes: DrawningProps) => paintImage(coordiantes));
 
 socket.on("CHAT_HISTORY", (chatHistory: MsgProps[]) => {
-  console.log("object", chatHistory);
   setChatHistory(chatHistory);
 });
-
-export const userDraw = (coordiantes: DrawningProps) => {
-  socket.emit("USER_DRAWNING", coordiantes);
-};
