@@ -14,7 +14,8 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noImplicitAny": false
   },
   "exclude": ["./node_modules", "./public", "./build"],
   "include": ["src"]
