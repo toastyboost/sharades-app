@@ -22,7 +22,7 @@ jobs:
           node-version: 10.x
 
       - name: Install Dependencies
-        run: yarn install --prod --pure-lockfile
+        run: yarn install --prod
 
       - name: Build for GitHub
         run: yarn build

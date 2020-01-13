@@ -8,7 +8,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": ["../node_modules/@types", "../@types"],
     "types": ["styled-components", "react", "react-dom"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
