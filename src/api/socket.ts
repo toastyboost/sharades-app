@@ -1,4 +1,4 @@
-import io from "socket.io-client";
+import * as io from "socket.io-client";
 import { createEffect } from "effector";
 
 import { receiveMsg, setChatHistory } from "features/messages";

@@ -1,6 +1,4 @@
 import * as React from "react";
-
-// @ts-ignore
 import * as ReactDOM from "react-dom";
 
 import { useStore } from "effector-react";
